@@ -47,7 +47,7 @@ git clone https://github.com/ashokjain001/catalog.git
 /catalog/<string:item>/delete - delete item(login required).
 
 
-**JSON endpoints for API consumption - **
+**JSON endpoints for API consumption -**
 
 /catalog/JSON - show all catalogs.
 
