@@ -12,7 +12,7 @@ This is a RESTful web application using the Python framework FLASK along with im
 * RESTful API.
 * Python Flask framework.
 * HTML, CSS and Jinja2 templating.
-* OAuth2 3rd party Authentication using Google and Facebook.
+* OAuth2 3rd party user authentication using Google and Facebook.
 * SQLAlchemy ORM CRUD operation. 
 
 ## Requirements
