@@ -28,13 +28,13 @@ git clone https://github.com/ashokjain001/catalog.git
 ```
 3. From inside the catalog folder launch the Vagrant VM (by typing **vagrant up** from the terminal and log in using **vagrant ssh**).
 4. Once Vagrant VM is up and running, run this web application in terminal by typing **python application.py**.
-5. Access the application by visiting http://localhost:5000 locally on your browser.
+5. Access the application by visiting http://localhost:5000 locally on your browser. 
 
 ## Endpoints
  
 **endpoints to access resources -** 
 
-/catalog - displays all the catalogs and latest items.
+/catalog - displays all the catalogs and latest items. 
 
 /catalog/<string:catalog>/items - displays all the items under catalog.
 
