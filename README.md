@@ -27,8 +27,8 @@ Virtual Machine and Vagrant are required to run the web application.
 git clone https://github.com/ashokjain001/catalog.git
 ```
 3. From inside the catalog folder launch the Vagrant VM (by typing **vagrant up** from the terminal and log in using **vagrant ssh**).
-4. Run this web application within the VM by typing **python application.py**.
-5. Access and test your application by visiting http://localhost:5000 locally on your browser.
+4. Once Vagrant VM is up and running, run this web application in terminal by typing **python application.py**.
+5. Access the application by visiting http://localhost:5000 locally on your browser.
 
 ## Endpoints
  
