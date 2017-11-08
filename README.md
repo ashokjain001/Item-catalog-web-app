@@ -6,7 +6,7 @@ This web application is developed as a requirement for Udacity's Full Stack Web 
 The objective of the project is to create a web application that provides a list of items within a variety of categories as well as provide a user registration and authentication system. Registered users will have the ability to post, edit and delete their own items.
 
 ## Technology
-This is a RESTful web application using the Python framework FLASK along with implementing third-party OAuth2 Google and Facebook authentication. Application uses sqllite for database and utilizes SQLAlchemy ORM to perform CRUD (create, read, update and delete) operations.
+This is a RESTful web application using the Python framework FLASK along with implementing third-party OAuth2 Google and Facebook authentication. Application uses sqllite for database and utilizes SQLAlchemy ORM to perform CRUD(create, read, update and delete) operations.
 
 ## Skills learnt and applied in this project:
 * RESTful API.
@@ -17,7 +17,7 @@ This is a RESTful web application using the Python framework FLASK along with im
 
 ## Requirements
 
-Virtual Machine and Vagrant are required to run the web application, download and Install [Vagrant](https://www.vagrantup.com/downloads.html), [VM](https://www.virtualbox.org/wiki/Downloads) and [vagrant file](https://github.com/udacity/fullstack-nanodegree-vm) which contains all the setup.
+Virtual Machine and Vagrant are required to run the web application, download and Install [Vagrant](https://www.vagrantup.com/downloads.html), [VM](https://www.virtualbox.org/wiki/Downloads).
 
 ## Download and setup
 
