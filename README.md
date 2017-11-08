@@ -22,12 +22,12 @@ Virtual Machine and Vagrant are required to run the web application.
 ## Download and setup
 
 1. Download and Install [Vagrant](https://www.vagrantup.com/downloads.html), [VM](https://www.virtualbox.org/wiki/Downloads).
-2. After installation navigate to vagrant subdirectory by running command cd vagrant in your terminal and download required project files by cloning this git repository mentioned below and contents will be shared with your virtual machine.
+2. After installation navigate to vagrant subdirectory by running command **cd vagrant** in your terminal and download required project files by cloning this git repository mentioned below and contents will be shared with your virtual machine.
 ```
 git clone https://github.com/ashokjain001/catalog.git
 ```
-3. From inside the catalog folder launch the Vagrant VM (by typing vagrant up from the terminal and log in using vagrant ssh).
-4. Run this web application within the VM by typing python application.py.
+3. From inside the catalog folder launch the Vagrant VM (by typing **vagrant up** from the terminal and log in using **vagrant ssh**).
+4. Run this web application within the VM by typing **python application.py**.
 5. Access and test your application by visiting http://localhost:5000 locally on your browser.
 
 ## Endpoints
