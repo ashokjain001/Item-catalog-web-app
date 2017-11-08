@@ -17,7 +17,7 @@ This is a RESTful web application using the Python framework FLASK along with im
 
 ## Requirements
 
-Virtual Machine and Vagrant are required to run the web application, download and Install [Vagrant](https://www.vagrantup.com/downloads.html), [VM](https://www.virtualbox.org/wiki/Downloads).
+Virtual Machine and Vagrant are required to run the web application.
 
 ## Download and setup
 
@@ -29,3 +29,30 @@ git clone https://github.com/ashokjain001/catalog.git
 3. From inside the catalog folder launch the Vagrant VM (by typing vagrant up from the terminal and log in using vagrant ssh).
 4. Run this web application within the VM by typing python application.py.
 5. Access and test your application by visiting http://localhost:5000 locally on your browser.
+
+## Endpoints
+ 
+endpoints to access resources - 
+
+/catalog - displays all the catalogs and latest items.
+
+/catalog/<string:catalog>/items - displays all the items under catalog.
+
+/login - login page.
+
+/catalog/item/new - add a new item(login required).
+
+/catalog/<string:item>/edit - display form to edit items(login required).
+
+/catalog/<string:item>/delete - delete item(login required).
+
+
+JSON endpoints for API consumption - 
+
+/catalog/JSON - show all catalogs.
+
+/items/JSON - show all items.
+
+/catalog/<string:catalog>/items/<string:item>/JSON - show specific item under a catalog.
+
+/catalog/<string:catalog>/items/JSON - show all the items under a particular catalog.
