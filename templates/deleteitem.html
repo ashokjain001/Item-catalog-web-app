@@ -1,0 +1,43 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% include "header.html"%}
+
+
+<div class = 'flash'>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+
+ <div class = 'jumbotron'>
+     <div class="container">
+     <div class="row">
+         <h3>Delete Item</h3>
+	     <h2>Are you sure you want to delete {{ deleteitem.name }} </h2>
+
+            <!--<form action method = 'POST'>-->
+                <!--<input type='submit' value='delete'>-->
+                <!--<input class="MyButton" type="button" value="cancel" onclick="window.location.href='{{url_for('showCatalog')}}'" />-->
+            <!--</form>-->
+         <form action method = 'POST'>
+             <button type="submit" class="btn btn-danger">Delete</button>
+              <button type="submit" class="btn btn-success" onclick="window.location.href='{{ url_for('showCatalog')}}">Cancel</button>
+          </form>
+
+
+     </div>
+
+ </div>
+</div>
+
+{% endblock %}

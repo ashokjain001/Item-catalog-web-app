@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% include "header.html"%}
+
+ <div class = 'jumbotron'>
+     <div class="container">
+     <div class="row">
+          <h3> Edit Item </h3>
+            <form action="{{url_for('editItem', item = item.name)}}" method = 'POST'>
+			<div class="row">
+				<div class="form-group col-xs-4 ">
+					<label for="names">Item name</label>
+					<input type="text" class="form-control" id="names" name="name" placeholder={{item.name}}>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group  col-xs-4 ">
+					<label for="Textarea">Description</label>
+					<textarea class="form-control" id="Textarea" rows="3" name="description" placeholder = {{item.description}}></textarea>
+				</div>
+			</div>
+
+			 <div class="row">
+				<div class="form-group  col-xs-4">
+				   <label for="dropdown">Category</label>
+					<select name="category" id = "dropdown" class="form-control">
+                         <option value="Cricket"{% if catalog.name=="Cricket" %} selected=catalog.name{% endif %}>Cricket</option>
+                         <option value="Soccer"{% if catalog.name=="Soccer" %} selected=catalog.name{% endif %}>Soccer</option>
+                         <option value="Baseball"{% if catalog.name=="Baseball" %} selected=catalog.name{% endif %}>Baseball</option>
+                         <option value="Frisbee"{% if catalog.name=="Frisbee" %} selected=catalog.name{% endif %}>Frisbee</option>
+                         <option value="Hockey"{% if catalog.name=="Hockey" %} selected=catalog.name{% endif %}>Hockey</option>
+                         <option value="Snowboarding"{% if catalog.name=="Snowboarding" %} selected=catalog.name{% endif %}>Snowboarding</option>
+                    </select>
+				</div>
+			 </div>
+				<div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+
+    	</form>
+
+     </div>
+
+ </div>
+</div>
+
+{% endblock %}
+
+

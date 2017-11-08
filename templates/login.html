@@ -1,0 +1,167 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% include "header.html"%}
+
+<div class = 'flash'>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+
+<div class = "jumbotron">
+
+    <div class = row>
+        <div class = "col-lg-6">
+
+            <h2 id = "heading"><strong>Login</strong></h2>
+            <form method = 'POST'>
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-7">
+                      <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-7">
+                      <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-primary">Sign in</button>
+                    </div>
+                  </div>
+            </form>
+        </div>
+
+        <div class = "col-lg-6">
+            <h2 id = "heading"><strong>Login using Google or Facebook</strong></h2>
+            <div id="signinButton">
+                <span class="g-signin"
+                    data-scope="openid email"
+                    data-clientid="{{CLIENT_ID}}"
+                    data-redirecturi="postmessage"
+                    data-accesstype="offline"
+                    data-cookiepolicy="single_host_origin"
+                    data-callback="signInCallback"
+                    data-approvalprompt="force">
+                  </span>
+
+            </div>
+
+        <button id = "fbbutton">
+            <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
+                        <a href='javascript:sendTokenToServer()'>  Facebook  </a>
+            </fb:login-button>
+        </button>
+        </div>
+
+    <div id="result"></div>
+
+        <div class = "col-lg-6">
+            <h2 id = "heading"><strong>If you are a new user sign up here</strong></h2>
+            <button type="submit" class="btn btn-default"> <a href = "{{ url_for('register')}}">Sign up</a></button>
+         </div>
+
+  <script>
+    function signInCallback(authResult) {
+
+      if (authResult['code']) {
+        // Hide the sign-in button now that the user is authorized
+        $('#signinButton').attr('style', 'display: none');
+        // Send the one-time-use code to the server, if the server responds, write a 'login successful' message to the web page and then redirect back to the main restaurants page
+
+        $.ajax({
+          type: 'POST',
+          url: '/gconnect?state={{STATE}}',
+          processData: false,
+          data: authResult['code'],
+          contentType: 'application/octet-stream; charset=utf-8',
+
+          success: function(result) {
+            // Handle or verify the server response if necessary
+            if (result) {
+              $('#result').html('Login Successful!</br>'+ result + '  Redirecting...')
+             setTimeout(function() {
+              window.location.href = "/catalog";
+             }, 4000);
+
+          } else if (authResult['error']) {
+        console.log('There was an error: ' + authResult['error']);
+      } else {
+            $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+             }
+          }
+
+      }); } }
+    </script>
+
+    <script>
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId      : {{APP_ID}},
+                cookie     : true,  // enable cookies to allow the server to access
+                                    // the session
+                xfbml      : true,  // parse social plugins on this page
+                version    : 'v2.9' // use version 2.2
+      });
+      };
+      // Load the SDK asynchronously
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+              }(document, 'script', 'facebook-jssdk'));
+              // Here we run a very simple test of the Graph API after login is
+              // successful.  See statusChangeCallback() for when this call is made.
+
+              function sendTokenToServer() {
+
+                var access_token = FB.getAuthResponse()['accessToken'];
+                console.log(access_token)
+                console.log('Welcome!  Fetching your information.... ');
+                FB.api('/me', function(response) {
+                  console.log('Successful login for: ' + response.name);
+                 $.ajax({
+                  type: 'POST',
+                  url: '/fbconnect?state={{STATE}}',
+                  processData: false,
+                  data: access_token,
+                  contentType: 'application/octet-stream; charset=utf-8',
+                  success: function(result) {
+                    // Handle or verify the server response if necessary.
+                    if (result) {
+                       //login successfull hide login buttons
+                       $('#signinButton').attr('style', 'display: none');
+                       $('#fbbutton').attr('style', 'display: none');
+                       $('#heading').attr('style', 'display: none');
+                       $('#result').html('Login Successful!</br>'+ result + '  Redirecting...')
+                     setTimeout(function() {
+                      window.location.href = "/catalog";
+                     }, 4000);
+
+            } else {
+                $('#result').html('Failed to make a server-side call. Check your configuration and console.');
+                }
+            }
+
+          });
+            });
+          }
+        </script>
+</div>
+
+{% endblock%}

@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% include "header.html"%}
+
+	<div class = 'flash'>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+            <ul>
+            {% for message in messages %}
+                <li> <strong> {{ message }} </strong> </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+ <div class = 'jumbotron'>
+     <div class="container">
+     <div class="row">
+        <div class="col-md-3 col-sm-3 left">
+         <h3>Categories</h3>
+	    {% for c in catalog %}
+            <a href = "{{url_for('showCatalogItems', catalog = c.name)}}"><h2>{{c.name}}</h2></a>
+	    {% endfor %}
+        </div>
+
+
+      <div class="col-md-9 col-sm-9 right">
+              <p><a href = "{{url_for('addItem')}}"><h2>Add Item</h2></a></p>
+          <h3>Latest Items</h3>
+          {% for i in item %}
+            <a href = "{{url_for('showItemDescription', catalog = catalog,item = i.name)}}"><h2>{{i.name}}</h2></a>
+          {% endfor %}
+
+      </div>
+     </div>
+ </div>
+</div>
+
+{% endblock %}
+
+

@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% include "header.html"%}
+
+
+ <div class = 'jumbotron'>
+     <div class="container">
+     <div class="row">
+
+	    <h3> {{ item.name }} </h3>
+          <h2>Description: {{item.description}}</h2>
+
+        <form action method = 'POST'>  		
+         	<button type="submit" class="btn btn-success"><a href = "{{url_for('editItem', item = item.name)}}">Edit</a></button>
+
+
+         	<button type="submit" class="btn btn-danger"><a href = "{{url_for('deleteItem', item = item.name)}}">Delete</a></button>
+
+       <!--   	<button type="submit" class="btn btn-success" onclick="window.location.href='{{url_for('editItem', item = item.name)}}">edit</button>	 -->
+
+        </form>
+
+     </div>
+
+ </div>
+</div>
+
+{% endblock %}
+
+

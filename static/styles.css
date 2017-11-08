@@ -1,0 +1,51 @@
+* {
+	font-family: "Helvetica Neue Bold", Roboto, Helvetica, Arial, sans-serif;
+	font-weight: 1000;
+}
+
+body {
+    background-color: #8c8c8c;
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+h2 {
+    color: #005c99;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5;
+
+}
+
+h3 {
+    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+	font-size: 30px;
+    font-weight: bold;
+}
+
+.jumbotron {
+    padding-top: 15px;
+	padding-bottom: 30px;
+	margin-bottom: 15px;
+	margin-top: 0px;
+	padding-left: 30px;
+	background-color: #eceeef;
+	position: relative;
+    z-index: 1;
+    box-shadow: 0 4px 16px -2px black;
+
+}
+
+
+
+.right {
+    float: left;
+    border-left: 1px solid gray;
+    margin-left: -1px;
+    padding-left: 70px;
+
+}
+
+.navcolor {
+    color :  #ffffff;
+}

@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+{% block content %}
+
+{% include "header.html"%}
+
+
+ <div class = 'jumbotron'>
+     <div class="container">
+     <div class="row">
+
+	    <h3> {{ item.name }} </h3>
+          <h2>Description: {{item.description}}</h2>
+
+     </div>
+
+ </div>
+</div>
+
+{% endblock %}
+
+
