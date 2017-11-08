@@ -32,7 +32,7 @@ git clone https://github.com/ashokjain001/catalog.git
 
 ## Endpoints
  
-endpoints to access resources - 
+**endpoints to access resources -** 
 
 /catalog - displays all the catalogs and latest items.
 
@@ -47,7 +47,7 @@ endpoints to access resources -
 /catalog/<string:item>/delete - delete item(login required).
 
 
-JSON endpoints for API consumption - 
+**JSON endpoints for API consumption - **
 
 /catalog/JSON - show all catalogs.
 
