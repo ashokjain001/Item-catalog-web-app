@@ -9,7 +9,8 @@ from sqlalchemy.orm import sessionmaker
 from catalog_db_user import Base, Catalog, Items, User
 import random, string, httplib2, json, requests, os
 from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
-from flask_httpauth import HTTPBasicAuth
+from flask_httpauth import HTTPB
+asicAuth
 auth = HTTPBasicAuth()
 
 # ================
@@ -115,10 +116,10 @@ def verify_password(email, password):
     print("Looking for user %s" % email)
     user = session.query(User).filter_by(email=email).first()
     if not user:
-        print "User not found"
+        print("User not found")
         return "user not found"
     elif not user.verify_password(password):
-        print "Unable to verify password"
+        print("Unable to verify password")
         return "wrong password"
     else:
         g.user = user
@@ -168,7 +169,7 @@ def gconnect():
     if result['issued_to'] != CLIENT_ID:
         response = make_response(
             json.dumps("Token's client ID does not match app's."), 401)
-        print "Token's client ID does not match app's."
+        print("Token's client ID does not match app's.")
         response.headers['Content-Type'] = 'application/json'
         return response
 
@@ -213,7 +214,7 @@ def gconnect():
     output += ' " style = "width: 100px; height: 100px;border-radius: '\
         '50px;-webkit-border-radius: 50px;-moz-border-radius: 50px;"> '
     flash("you are now logged in as %s" % login_session['username'])
-    print "done!"
+    print("done!")
 
     return output
 
@@ -224,7 +225,7 @@ def gdisconnect():
 
     access_token = login_session.get('access_token')
     if access_token is None:
-        print 'Access Token is None'
+        print('Access Token is None')
         response = make_response(json.dumps('Current user not connected.'),
                                  401)
         response.headers['Content-Type'] = 'application/json'
@@ -451,7 +452,7 @@ def addItem():
     if request.method == 'POST':
 
         user_id = getUserID(login_session['email'])
-        print user_id
+        print(user_id)
         catalogs = session.query(Catalog).filter_by(
                                     name=request.form['category']).one()
         newItem = Items(name=request.form['name'],
