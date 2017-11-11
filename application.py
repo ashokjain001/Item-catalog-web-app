@@ -9,8 +9,7 @@ from sqlalchemy.orm import sessionmaker
 from catalog_db_user import Base, Catalog, Items, User
 import random, string, httplib2, json, requests, os
 from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
-from flask_httpauth import HTTPB
-asicAuth
+from flask_httpauth import HTTPBasicAuth
 auth = HTTPBasicAuth()
 
 # ================
