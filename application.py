@@ -3,6 +3,7 @@
 # =========
 from flask import Flask, render_template, request, redirect, url_for, flash,\
     jsonify, make_response, session as login_session, abort, g
+from functools import wraps
 from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
 from catalog_db_user import Base, Catalog, Items, User
@@ -15,7 +16,7 @@ auth = HTTPBasicAuth()
 # Flask instance
 # ================
 app = Flask(__name__)
-
+app.secret_key = '12345'
 
 # ==========================================
 # GConnect CLIENT_ID and Facebook App ID
@@ -32,6 +33,20 @@ Base.metadata.bind = engine
 # create session
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
+
+
+
+# login decorator 
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'username' in login_session:
+           return f(*args, **kwargs)     
+        else:    
+            flash('You need to login in first!')
+            return redirect(url_for('showLogin'))
+    return wrap        
+
 
 
 # login route
@@ -427,10 +442,11 @@ def showItemDescription(catalog, item):
 
 # add item to the catalog
 @app.route('/catalog/item/new', methods=['GET', 'POST'])
+@login_required
 def addItem():
-    if 'username' not in login_session:
+    '''if 'username' not in login_session:
         flash('please login to add item!')
-        return redirect(url_for('showLogin'))
+        return redirect(url_for('showLogin'))'''
 
     if request.method == 'POST':
 
@@ -453,6 +469,7 @@ def addItem():
 
 # edit a catalog item
 @app.route('/catalog/<string:item>/edit', methods=['GET', 'POST'])
+@login_required
 def editItem(item):
 
     edititem = session.query(Items).filter_by(name=item).first()
@@ -460,9 +477,9 @@ def editItem(item):
     catalogs = (session.query(Catalog).filter_by(id=edititem.catalog_id).
                 first())
 
-    if 'username' not in login_session:
+    '''if 'username' not in login_session:
         flash('Please login to edit item!')
-        return redirect(url_for('showLogin'))
+        return redirect(url_for('showLogin'))'''
 
     if login_session['user_id'] != edititem.user_id:
         return "<script>function myFunction(){alert('you ae not authorized" \
@@ -488,13 +505,14 @@ def editItem(item):
 
 # delete a catalog item
 @app.route('/catalog/<string:item>/delete', methods=['GET', 'POST'])
+@login_required
 def deleteItem(item):
 
     deleteitem = session.query(Items).filter_by(name=item).first()
 
-    if 'username' not in login_session:
+    '''if 'username' not in login_session:
         flash('Please login to delete item!')
-        return redirect(url_for('showLogin'))
+        return redirect(url_for('showLogin'))'''
 
     if login_session['user_id'] != deleteitem.user_id:
         return "<script>function myFunction(){alert('you ae not authorized " \
@@ -537,5 +555,5 @@ def itemsJSON():
 
 if __name__ == '__main__':
     app.debug = True
-    app.secret_key = 'super_secret_key'
-    app.run(host='0.0.0.0', port=5000)
+    #app.run(ssl_context='adhoc')
+    app.run(host='0.0.0.0', port=8001)

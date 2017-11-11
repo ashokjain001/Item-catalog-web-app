@@ -1,0 +1,5 @@
+catalogapp
+pip-selfcheck.json
+*.pyc
+*.db
+Vagrantfile
