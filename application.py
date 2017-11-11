@@ -112,7 +112,7 @@ def register():
 # verify password
 @auth.verify_password
 def verify_password(email, password):
-    print "Looking for user %s" % email
+    print("Looking for user %s" % email)
     user = session.query(User).filter_by(email=email).first()
     if not user:
         print "User not found"
