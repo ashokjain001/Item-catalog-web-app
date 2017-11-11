@@ -1,5 +1,7 @@
-catalogapp
+/catalogapp
 pip-selfcheck.json
 *.pyc
 *.db
-Vagrantfile
+/Vagrantfile
+.DS_Store
+.Python
