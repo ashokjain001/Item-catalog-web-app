@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash,\
 from sqlalchemy import create_engine, desc
 from sqlalchemy.orm import sessionmaker
 from catalog_db_user import Base, Catalog, Items, User
-import random, string, httplib2, json, requests
+import random, string, httplib2, json, requests, os
 from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 from flask_httpauth import HTTPBasicAuth
 auth = HTTPBasicAuth()
