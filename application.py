@@ -506,7 +506,7 @@ def editItem(item):
 
         return redirect(url_for('showCatalog'))
     else:
-        return render_template('edititem.html',
+        return render_template('editItem.html',
                                item=edititem, catalog=catalogs)
 
 
