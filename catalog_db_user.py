@@ -56,5 +56,6 @@ class Items(Base):
         }
 
 
-engine = create_engine('sqlite:///catalogappwithuserslogin.db')
+#engine = create_engine('sqlite:///catalogappwithuserslogin.db')
+engine = create_engine(os.environ['DATABASE_URL'])
 Base.metadata.create_all(engine)
