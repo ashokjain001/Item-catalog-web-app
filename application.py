@@ -502,7 +502,7 @@ def editItem(item):
         edititem.catalog_id = catalogs.id
         session.add(edititem)
         session.commit()
-        flash('{0} Item edited!'.format(edititem.name))
+        flash('{0} Item edited!'.format(edititem.name)) 
 
         return redirect(url_for('showCatalog'))
     else:
