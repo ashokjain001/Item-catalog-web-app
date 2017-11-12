@@ -54,7 +54,7 @@ def login_required(f):
 def showLogin():
 
     state = ''.join(random.choice(string.ascii_uppercase + string.digits)
-                    for x in xrange(32))
+                    for x in range(32))
     login_session['state'] = state
 
     if request.method == 'POST':
