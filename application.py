@@ -16,7 +16,10 @@ auth = HTTPBasicAuth()
 # Flask instance
 # ================
 app = Flask(__name__)
-app.secret_key = '12345'
+
+# config
+app.config.from_object('config.BaseConfig')
+
 
 # ==========================================
 # GConnect CLIENT_ID and Facebook App ID
@@ -35,7 +38,6 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-
 # login decorator 
 def login_required(f):
     @wraps(f)
@@ -46,7 +48,6 @@ def login_required(f):
             flash('You need to login in first!')
             return redirect(url_for('showLogin'))
     return wrap        
-
 
 
 # login route
@@ -554,6 +555,4 @@ def itemsJSON():
 
 
 if __name__ == '__main__':
-    app.debug = True
-    #app.run(ssl_context='adhoc')
     app.run(host='0.0.0.0', port=8001)
