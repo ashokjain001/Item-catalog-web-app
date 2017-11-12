@@ -15,7 +15,7 @@ auth = HTTPBasicAuth()
 # ================
 # Flask instance
 # ================
-app = Flask(__name__)0.0.0
+app = Flask(__name__)
 
 # config
 app.config.from_object('config.ProductionConfig')
