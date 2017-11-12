@@ -10,6 +10,7 @@ from catalog_db_user import Base, Catalog, Items, User
 import random, string, httplib2, json, requests, os
 from oauth2client.client import flow_from_clientsecrets, FlowExchangeError
 from flask_httpauth import HTTPBasicAuth
+from config import ProductionConfig
 auth = HTTPBasicAuth()
 
 # ================
@@ -18,9 +19,10 @@ auth = HTTPBasicAuth()
 app = Flask(__name__)
 
 # config
-app.config.from_object('config.ProductionConfig')
+if os.environ.get('APP_LOCATION') == 'heroku':
+    app.config.from_object('config.ProductionConfig')
 
-
+    
 # ==========================================
 # GConnect CLIENT_ID and Facebook App ID
 # ==========================================
