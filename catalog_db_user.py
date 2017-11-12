@@ -56,9 +56,8 @@ class Items(Base):
         }
 
 
-if os.environ.get('APP_LOCATION') == 'heroku':
-    engine = create_engine(os.environ['DATABASE_URL'])
-else:
-    engine = create_engine('sqlite:///catalogappwithuserslogin.db')
+engine = create_engine(os.environ['DATABASE_URL'])
+
+#engine = create_engine('sqlite:///catalogappwithuserslogin.db')
 
 Base.metadata.create_all(engine)

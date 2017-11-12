@@ -4,10 +4,10 @@ import os
 from catalog_db_user import Catalog, Items, User, Base
 
 
-if os.environ.get('APP_LOCATION') == 'heroku':
-    engine = create_engine(os.environ['DATABASE_URL'])
-else:
-    engine = create_engine('sqlite:///catalogappwithuserslogin.db')
+#if os.environ.get('APP_LOCATION') == 'heroku':
+engine = create_engine(os.environ['DATABASE_URL'])
+#else:
+#    engine = create_engine('sqlite:///catalogappwithuserslogin.db')
 
 # Bind the engine to the metadata of the Base class so that the
 # declaratives can be accessed through a DBSession instance
@@ -61,7 +61,7 @@ catalog6 = Catalog(id=6, name="Snowboarding")
 session.add(catalog6)
 session.commit()
 
-
+'''
 item1 = Items(id=1, name="Cricket Bat", description="Cricket bat", catalog=catalog1, user=user1)
 session.add(item1)
 session.commit()
@@ -92,7 +92,7 @@ session.commit()
 
 item8 = Items(id=8, name="Snowboard", description="Snowboard", catalog=catalog6, user=user1)
 session.add(item8)
-session.commit()
+session.commit()'''
 
 print("added menu items!")
 

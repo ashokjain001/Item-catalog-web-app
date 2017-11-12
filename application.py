@@ -19,10 +19,9 @@ auth = HTTPBasicAuth()
 app = Flask(__name__)
 
 # config
-if os.environ.get('APP_LOCATION') == 'heroku':
-    app.config.from_object('config.ProductionConfig')
+app.config.from_object('config.ProductionConfig')
 
-    
+
 # ==========================================
 # GConnect CLIENT_ID and Facebook App ID
 # ==========================================
