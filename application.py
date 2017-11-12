@@ -15,7 +15,7 @@ auth = HTTPBasicAuth()
 # ================
 # Flask instance
 # ================
-app = Flask(__name__)
+app = Flask(__name__)0.0.0
 
 # config
 app.config.from_object('config.ProductionConfig')
@@ -31,7 +31,8 @@ fb_app_id = json.loads(
 
 
 # connect to database
-engine = create_engine('sqlite:///catalogappwithuserslogin.db')
+# engine = create_engine('sqlite:///catalogappwithuserslogin.db')
+engine = create_engine(os.environ['DATABASE_URL'])
 Base.metadata.bind = engine
 # create session
 DBSession = sessionmaker(bind=engine)
