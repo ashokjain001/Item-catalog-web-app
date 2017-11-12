@@ -556,4 +556,7 @@ def itemsJSON():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8001)
+    if os.environ.get('APP_LOCATION') == 'heroku':
+        app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
+    else:
+        app.run(host='0.0.0.0', port=8001)
