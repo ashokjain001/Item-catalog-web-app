@@ -89,7 +89,7 @@ item8 = Items(id=8, name="Snowboard", description="Snowboard", catalog=catalog6,
 session.add(item8)
 session.commit()
 
-print "added menu items!"
+print("added menu items!")
 
 
 
