@@ -31,8 +31,11 @@ fb_app_id = json.loads(
 
 
 # connect to database
-# engine = create_engine('sqlite:///catalogappwithuserslogin.db')
-engine = create_engine(os.environ['DATABASE_URL'])
+ if os.environ.get('APP_LOCATION') == 'heroku':
+    engine = create_engine(os.environ['DATABASE_URL'])
+else:
+    engine = create_engine('sqlite:///catalogappwithuserslogin.db')
+
 Base.metadata.bind = engine
 # create session
 DBSession = sessionmaker(bind=engine)
@@ -90,6 +93,7 @@ def register():
         login_session['email'] = request.form['email']
         login_session['username'] = request.form['username']
         user_id = getUserID(login_session['email'])
+        print(user_id,"780987989807770797970979797979709")
         login_session['user_id'] = user_id
         if (user_id) is None:
             new_user = User(username=login_session['username'],
