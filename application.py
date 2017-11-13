@@ -274,7 +274,8 @@ def fbconnect():
            '&fb_exchange_token=%s' % (app_id, app_secret, access_token))
 
     h = httplib2.Http()
-    result = h.request(url, 'GET')[1]
+    result = h.request(url, 'GET')[1].decode('utf-8')
+  
     data = json.loads(result)
 
     # Use token to get user info from API
