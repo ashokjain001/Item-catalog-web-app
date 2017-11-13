@@ -293,7 +293,7 @@ def fbconnect():
     url = ('https://graph.facebook.com/v2.9/me?access_token=%s'
            '&fields=name,id,email' % token)
     h = httplib2.Http()
-    result = h.request(url, 'GET')[1]
+    result = h.request(url, 'GET')[1].decode('utf-8')
 
     data = json.loads(result)
 
