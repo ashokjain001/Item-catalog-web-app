@@ -278,7 +278,7 @@ def fbconnect():
 
     h = httplib2.Http()
     result = h.request(url, 'GET')[1].decode('utf-8')
-    print(type(result),'(*&(*&(*^&(*^*^(^*^(^(^^*&^(^(^(^(*^(^&', result, result.decode('utf-8'))
+    print(type(result),'(*&(*&(*^&(*^*^(^*^(^(^^*&^(^(^(^(*^(^&', result)
 
 
     data = json.loads(result)
