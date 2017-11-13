@@ -277,7 +277,7 @@ def fbconnect():
            '&fb_exchange_token=%s' % (app_id, app_secret, access_token))
 
     h = httplib2.Http()
-    result = h.request(url, 'GET')[1]
+    result = h.request(url, 'GET')[1].decode('utf-8')
     print(type(result),'(*&(*&(*^&(*^*^(^*^(^(^^*&^(^(^(^(*^(^&', result, result.decode('utf-8'))
 
 
@@ -294,7 +294,7 @@ def fbconnect():
         that it can be used directly in the graph api calls
     '''
     token = result.split(',')[0].split(':')[1].replace('"', '')
-
+    print('Token', token)
     url = ('https://graph.facebook.com/v2.9/me?access_token=%s'
            '&fields=name,id,email' % token)
     h = httplib2.Http()
