@@ -275,7 +275,9 @@ def fbconnect():
 
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
-    print(type(result),'(*&(*&(*^&(*^*^(^*^(^(^^*&^(^(^(^(*^(^&')
+    print(type(result),'(*&(*&(*^&(*^*^(^*^(^(^^*&^(^(^(^(*^(^&', result, result.decode('utf-8'))
+
+
     data = json.loads(result)
 
     # Use token to get user info from API
