@@ -1,11 +1,12 @@
 Item Catalog Web Application  
 ===============================
+Live web app can be found at [Catalog APP](https://catalogappy.herokuapp.com/).
 This web application is developed as a requirement for Udacity's Full Stack Web Development Nanodegree Program. 
 
-## Description
+## General Description
 The objective of the project is to create a web application that provides a list of items within a variety of categories as well as provide a user registration and authentication system. Registered users will have the ability to post, edit and delete their own items.
 
-## Technology
+## Technical Description
 This is a RESTful web application using the Python framework FLASK along with implementing third-party OAuth2 Google and Facebook authentication. Application uses sqllite for database and utilizes SQLAlchemy ORM to perform CRUD(create, read, update and delete) operations.
 
 ## Skills learnt and applied in this project:
@@ -14,6 +15,7 @@ This is a RESTful web application using the Python framework FLASK along with im
 * HTML, CSS and Jinja2 templating.
 * OAuth2 3rd party user authentication using Google and Facebook.
 * SQLAlchemy ORM CRUD operation. 
+* Heroku app deployment
 
 ## Requirements
 
