@@ -8,7 +8,6 @@ class BaseConfig(object):
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 
-
 class TestConfig(BaseConfig):
     DEBUG = True
     TESTING = True
