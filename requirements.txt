@@ -27,7 +27,7 @@ pyasn1==0.3.7
 pyasn1-modules==0.1.5
 Pygments==2.2.0
 requests==2.18.4
-rsa==3.4.2
+rsa==4.1
 scandir==1.6
 simplegeneric==0.8.1
 six==1.11.0
